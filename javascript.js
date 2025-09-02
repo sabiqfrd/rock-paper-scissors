@@ -53,32 +53,35 @@ function getHumanChoice(){  // Create function for human's choice
     return humanChoice;
 }
 
+let humanScore = 0;
+let computerScore = 0;
+
 function playRound(p1, p2){    //Create function for game's logic
     let result;
 
-    if (p1 == rock && p2 == scissors) {
-        result = "You win! Rock beats scissors.";
-    } else if (p1 == scissors && p2 == paper) {
-        result = "You win! Scissors beats paper.";
-    } else if (p1 == paper && p2 == rock) {
-        result = "You win! Paper beats rock.";
+    if ((p1 == rock && p2 == scissors) ||
+        (p1 == scissors && p2 == paper) ||
+        (p1 == paper && p2 == rock)
+        ) {
+        result = `You win! ${p1} beats ${p2}.`;
+        humanScore++;
     } else if (p1 == p2) {
         result = "It's a draw.";
-    } else if (p2 == rock && p1 == scissors) {
-        result = "You lose! Rock beats scissors.";
-    } else if (p2 == scissors && p1 == paper) {
-        result = "You lose! Scissors beats paper.";
-    } else if (p2 == paper && p1 == rock) {
-        result = "You lose! Paper beats rock.";
+    } else {
+        result = `You lost! ${p2} beats ${p1}`;
+        computerScore++;
     }
 
     return result;
 }
 
-let humanChoice = getHumanChoice();
-console.log(humanChoice);
-let computerChoice = getComputerChoice();
-console.log("Computer chose " + computerChoice);
+while(true){
+    let humanChoice = getHumanChoice();
+    console.log(humanChoice);
+    let computerChoice = getComputerChoice();
+    console.log("Computer chose " + computerChoice);
 
-let result = playRound(humanChoice, computerChoice);
-console.log(result);
+    let result = playRound(humanChoice, computerChoice);
+    console.log(result);
+    console.log(`Its ${humanScore}-${computerScore}`);
+}
