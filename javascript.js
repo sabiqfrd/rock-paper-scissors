@@ -13,64 +13,72 @@
 // 6. Declare game's winner of 5 rounds
     // a. Compare computer's and human's wins
 
-// Create variables
-let rock = "rock";
+let rock = "rock";  // Create variables
 let scissors = "scissors";
 let paper = "paper";
 
-// Create function for computer's choice
-function getComputerChoice(){
+function getComputerChoice(){   // Create function for computer's choice
     let computerChoice;
 
-    // Generate random number between 1 to 10
-    let randomNumber = Math.random() * 10;
-
-    // Assign result to variables
-    if (randomNumber <= 3){
+    let randomNumber = Math.random() * 10;  // Generate random number between 1 to 10
+    if (randomNumber <= 3){         // Assign result to variables
         computerChoice = rock;
     } else if (randomNumber >= 7){
         computerChoice = scissors;
     } else {
         computerChoice = paper;
     }
-
-    // Return computer's choice
-    return computerChoice;
+    return computerChoice;  // Return computer's choice
 }
 
-// Create function for human's choice
-function getHumanChoice(){
+function getHumanChoice(){  // Create function for human's choice
+    let humanChoice;
+    
     let isTrue = true;
-
     while (isTrue){
-        // Ask human's choice
-        let getHumanChoice = prompt("Choose between rock, paper, or scissors.");
+        let getHumanChoice = prompt("Choose between rock, paper, or scissors.");    // Ask human's choice
+        isTrue = false; // Continue function when user's input is correct
 
-        // Continue function when user's input is correct
-        isTrue = false;
-
-        let humanChoice;
-
-        // Assign result to variables
-        if (getHumanChoice.toLowerCase().trim() == rock){
+        if (getHumanChoice.toLowerCase().trim() == rock){   // Assign result to variables
             humanChoice = rock;
-            console.log(humanChoice);
         } else if (getHumanChoice.toLowerCase().trim() == paper){
             humanChoice = paper;
-            console.log(humanChoice);
         } else if (getHumanChoice.toLowerCase().trim() == scissors){
             humanChoice = scissors;
-            console.log(humanChoice);
         } else {
             console.log("Please enter a valid value");
-            
-            // Repeat prompt when user's input is false
-            isTrue = true;
+            isTrue = true;   // Repeat prompt when user's input is false
         }
-
     }
+    return humanChoice;
 }
 
-getHumanChoice();
+function playRound(p1, p2){    //Create function for game's logic
+    let result;
 
-console.log(getComputerChoice());
+    if (p1 == rock && p2 == scissors) {
+        result = "You win! Rock beats scissors.";
+    } else if (p1 == scissors && p2 == paper) {
+        result = "You win! Scissors beats paper.";
+    } else if (p1 == paper && p2 == rock) {
+        result = "You win! Paper beats rock.";
+    } else if (p1 == p2) {
+        result = "It's a draw.";
+    } else if (p2 == rock && p1 == scissors) {
+        result = "You lose! Rock beats scissors.";
+    } else if (p2 == scissors && p1 == paper) {
+        result = "You lose! Scissors beats paper.";
+    } else if (p2 == paper && p1 == rock) {
+        result = "You lose! Paper beats rock.";
+    }
+
+    return result;
+}
+
+let humanChoice = getHumanChoice();
+console.log(humanChoice);
+let computerChoice = getComputerChoice();
+console.log("Computer chose " + computerChoice);
+
+let result = playRound(humanChoice, computerChoice);
+console.log(result);
