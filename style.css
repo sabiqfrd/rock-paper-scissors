@@ -1,0 +1,72 @@
+body {
+    background-color: darkslategray;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    row-gap: 10px;
+}
+
+h1 {
+    box-sizing: border-box;
+    width: 80vw;
+    background-color: white;
+    border: solid gray;
+    margin: 0;
+    margin-top: 10px;
+    text-align: center;
+    padding: 20px;
+}
+
+h2 {
+    margin: 0;
+    padding: 10px;
+    font-size: large;
+    color: white;
+}
+
+#select {
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#choiceContainer {
+    display: flex;
+    width: 350px;
+    justify-content: space-between;
+}
+
+#humanChoiceContainer, #computerChoiceContainer {
+    background-color: white;
+    border: solid black;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#rock, #paper, #scissors {
+    color: white;
+    background-color: gray;
+    width: 100px;
+    height: 40px;
+    font-weight: bold;
+    font-size: large;
+}
+
+#display {
+    width: 350px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+}
+
